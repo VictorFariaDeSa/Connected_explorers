@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org.wiki/xacro">
+    
+    <!-- PROPERTIES -->
+    <xacro:property name="base_radius" value="0.6"/>
+    <xacro:property name="base_height" value="0.2"/>
+
+
+
+
+
+
+</robot>
