@@ -15,6 +15,43 @@ def generate_launch_description():
     rviz_config_file = os.path.join(get_package_share_directory(bringup_pkg), 'config', 'rviz_visualization_config.rviz')
 
 
+    spawn_robot1 = Node(
+        package='ros_gz_sim', 
+        executable='create', 
+        name='spawn_kusari1', 
+        arguments=[
+            '-name', 'kusari_bot1', 
+            '-topic', 'robot_description',
+            '-x', '0', '-y', '0', '-z', '0'
+        ],
+        output='screen'
+    )
+
+    spawn_robot2 = Node(
+        package='ros_gz_sim', 
+        executable='create', 
+        name='spawn_kusari2', 
+        arguments=[
+            '-name', 'kusari_bot2', 
+            '-topic', 'robot_description',
+            '-x', '2', '-y', '0', '-z', '0'
+        ],
+        output='screen'
+    )
+
+    spawn_robot3 = Node(
+        package='ros_gz_sim', 
+        executable='create', 
+        name='spawn_kusari3', 
+        arguments=[
+            '-name', 'kusari_bot3', 
+            '-topic', 'robot_description',
+            '-x', '4', '-y', '0', '-z', '0'
+        ],
+        output='screen'
+    )
+
+
     return LaunchDescription([
         DeclareLaunchArgument('use_sim_time', default_value='false', description='Use simulation time'),
 
@@ -48,7 +85,6 @@ def generate_launch_description():
                 os.path.join(get_package_share_directory('ros_gz_sim'), 'launch', 'gz_sim.launch.py')
             ),
             launch_arguments={'gz_args': 'empty.sdf'}.items()
-            # launch_arguments={'gz_args': f'{world_path} -r'}.items()
         ),
 
         Node(
@@ -60,6 +96,11 @@ def generate_launch_description():
                 '-topic', 'robot_description'
             ],
             output='screen'
-        )
+        ),
+
+        spawn_robot1,
+        spawn_robot2,
+        spawn_robot3
+
 
     ])
