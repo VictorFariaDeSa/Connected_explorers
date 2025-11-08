@@ -16,7 +16,8 @@
   <depend>rclpy</depend>
   <depend>visualization_msgs</depend>
   <depend>geometry_msgs</depend>
-
+  <depend>line_viewer</depend>
+  
   <export>
     <build_type>ament_cmake</build_type>
   </export>

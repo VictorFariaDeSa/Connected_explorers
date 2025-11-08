@@ -4,6 +4,8 @@
     <!-- INCLUDES -->
     <xacro:include filename="commom_properties.xacro"/>
     <xacro:include filename="dimensions.xacro"/>
+    <xacro:include filename="mobile_base_gazebo.xacro"/>
+
 
     <!-- WHEEL MACRO (ONLY radius, distance from center and angle in degrees) -->
     <xacro:macro name="add_wheel" params="wheel_name radius distance deg">
