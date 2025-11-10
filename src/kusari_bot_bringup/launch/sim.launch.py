@@ -13,11 +13,14 @@ def generate_launch_description():
     urdf_path = os.path.join(get_package_share_directory(description_pkg), 'URDF', 'kusari.urdf.xacro')
     gazebo_config_path = os.path.join(get_package_share_directory(bringup_pkg), 'config', 'gazebo_bridge.yaml')
     rviz_config_file = os.path.join(get_package_share_directory(bringup_pkg), 'config', 'rviz_visualization_config.rviz')
+    world_path = os.path.join(get_package_share_directory(bringup_pkg), 'worlds', 'test_world.world')
 
     robots = [
         {'name': 'robot1', 'x': 0.0, 'y': 0.0},
-        {'name': 'robot2', 'x': 2.0, 'y': 0.0},
-        {'name': 'robot3', 'x': 4.0, 'y': 0.0},
+        {'name': 'robot2', 'x': 4.0, 'y': 0.0},
+        {'name': 'robot3', 'x': 2.0, 'y': 3.0},
+        {'name': 'robot4', 'x': -1.0, 'y': 3.0},
+        {'name': 'robot5', 'x': 5.0, 'y': 3.0},
     ]
 
     ld_nodes = []
@@ -31,7 +34,7 @@ def generate_launch_description():
             PythonLaunchDescriptionSource(
                 os.path.join(get_package_share_directory('ros_gz_sim'), 'launch', 'gz_sim.launch.py')
             ),
-            launch_arguments={'gz_args': 'empty.sdf'}.items()
+            launch_arguments={'gz_args': f'{world_path} -r'}.items()
         )
     )
 
@@ -100,6 +103,15 @@ def generate_launch_description():
         name='rviz2',
         arguments=['-d', rviz_config_file],
         output='screen'
+    ))
+
+    ld_nodes.append(Node(
+        package='line_viewer',
+        executable='robot_link_visualizer',  # deve ser entry_point do setup.py
+        name='robot_link_visualizer',
+        output='screen',
+        emulate_tty=True,
+        parameters=[{'fixed_frame': 'world'}]  # opcional, se quiser passar o frame como parâmetro
     ))
 
     return LaunchDescription(ld_nodes)
