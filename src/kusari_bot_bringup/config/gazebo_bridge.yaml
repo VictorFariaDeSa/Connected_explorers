@@ -43,12 +43,43 @@
   gz_type_name: "gz.msgs.Model"
   direction: GZ_TO_ROS
 
-#inutil
-- ros_topic_name: "/robot/test_poses"
-  gz_topic_name: "/world/empty/pose/info"
-  ros_type_name: "geometry_msgs/msg/PoseArray"
-  gz_type_name: "gz.msgs.Pose_V"
+
+# Robô 1 - Odometry (Pose)
+- ros_topic_name: "/robot1/odom"
+  gz_topic_name: "/model/robot1/odometry"
+  ros_type_name: "nav_msgs/msg/Odometry"
+  gz_type_name: "gz.msgs.Odometry"
   direction: GZ_TO_ROS
+
+# Robô 2 - Odometry (Pose)
+- ros_topic_name: "/robot2/odom"
+  gz_topic_name: "/model/robot2/odometry"
+  ros_type_name: "nav_msgs/msg/Odometry"
+  gz_type_name: "gz.msgs.Odometry"
+  direction: GZ_TO_ROS
+
+# Robô 3 - Odometry (Pose)
+- ros_topic_name: "/robot3/odom"
+  gz_topic_name: "/model/robot3/odometry"
+  ros_type_name: "nav_msgs/msg/Odometry"
+  gz_type_name: "gz.msgs.Odometry"
+  direction: GZ_TO_ROS
+
+# Robô 4 - Odometry (Pose)
+- ros_topic_name: "/robot4/odom"
+  gz_topic_name: "/model/robot4/odometry"
+  ros_type_name: "nav_msgs/msg/Odometry"
+  gz_type_name: "gz.msgs.Odometry"
+  direction: GZ_TO_ROS
+
+# Robô 5 - Odometry (Pose)
+- ros_topic_name: "/robot5/odom"
+  gz_topic_name: "/model/robot5/odometry"
+  ros_type_name: "nav_msgs/msg/Odometry"
+  gz_type_name: "gz.msgs.Odometry"
+  direction: GZ_TO_ROS
+
+# Repeat for each robot
 
 
 
